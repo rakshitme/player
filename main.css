@@ -1,0 +1,198 @@
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#bll{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -5;
+    width: 100%;
+    height: 100vh;  
+    background: url(music/song-2.jpg);
+    filter: blur(4px);
+}
+
+.player{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 2px solid #f7e869;
+    width: 350px;
+    height: 500px;
+}
+.player marquee{
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    font-family: sans-serif;
+    color: #3a3535;
+    font-size: 23px;
+    z-index: 10;
+}
+
+.player .playing{
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.player .blur{
+    height: 100%;
+    width: 100%;
+    background: url(music/calma.jpg);
+    background-size: cover;
+    position: relative;
+    filter: blur(2px);
+}
+.player .playing .rotateCD{
+    height: 180px;
+    width: 180px;
+    border-radius: 50%;
+    background: url(music/calma.jpg);
+    background-size: cover;
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    animation: cdRotate 3s linear infinite;
+    animation-play-state: paused;
+}
+
+.player .playing .rotateCD::before{
+    content: "";
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    background: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: none;
+}
+
+
+.player .playing .controls{
+    height: 90px;
+    width: 300px;
+    position: absolute;
+    left: 50%;
+    top: 87%;
+    transform: translate(-50%, -30%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.2s linear;
+    z-index: 10;
+}
+
+.player .playing button{
+    height: 50px;
+    width: 50px;
+    border: none;
+}
+
+.player .playing .play-previous-btn{
+    background: url(icon/white/icons8-less-than-50.png);
+    background-size: cover;
+}  
+
+.player .play-pause-btn{
+    background: url(icon/white/icons8-play-50-3.png);
+    background-size: cover;
+}
+
+.player .playing .play-next-btn{
+    background: url(icon/white/icons8-more-than-50.png);
+    background-size: cover;
+}
+
+.player .playing button:hover{
+    background-color: rgba(110, 105, 105, 0.534);
+}
+
+.player:hover .controls{
+    opacity: 1;
+}
+
+.player .progressBar{
+    position: absolute;
+    height: 3px;
+    width: 300px;
+    border: 1px solid #ffffff;
+    top: 0;
+    border-radius: 5px;
+}
+.player .progress{
+    height: 100%;
+    width: 0;
+    background: #ffffff;
+}
+
+.player .wave{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: url(img/wave_1_89.png);
+    background-size: cover;
+    width: 100%;
+    height: 100px;
+    animation: waving 6s linear infinite;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.player .wave::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: url(img/wave_1_89.png);
+    background-size: cover;
+    width: 100%;
+    height: 100px;
+    animation: waving 6s reverse infinite;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+.player .wave::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: url(img/wave_1_89.png);
+    background-size: cover;
+    width: 100%;
+    height: 120px;
+    animation-delay: -3;
+    animation: waving 6s linear infinite;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+
+@keyframes cdRotate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+@keyframes waving{
+    0%{
+        background-position: 0;
+    }
+    100%{
+        background-position: 972px;
+    }
+}
